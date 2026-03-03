@@ -1,0 +1,367 @@
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --accent: #3182ce;
+    --accent-light: #ebf8ff;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+header {
+    text-align: center;
+    padding: 0;
+    line-height: 0;
+}
+
+.logo-wrapper {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.logo-icon-container {
+    width: 130px;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    /* Slight softening if edges are sharp */
+}
+
+.logo-icon {
+    position: absolute;
+    width: 320px;
+    /* Scale width so the bus fills the 130px container width */
+    max-width: none;
+    top: 50%;
+    left: -15px;
+    /* Shift slightly left if there's padding in the image */
+    transform: translateY(-50%);
+    mix-blend-mode: multiply;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1a2b4c;
+    /* Deep matching blue/gray */
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.logo-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: #4a5568;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem 3rem;
+}
+
+.upcoming-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.upcoming-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upcoming-info .label {
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+    background-color: var(--accent-light);
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+}
+
+.upcoming-info .time {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+    color: var(--text-main);
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+}
+
+.upcoming-info .bus-name {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.upcoming-info .countdown {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: #e53e3e;
+    /* soft red/orange for urgency */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 18px;
+    /* prevent layout shift if empty */
+}
+
+/* ... pulse animation remains same ... */
+.countdown.active::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #e53e3e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(229, 62, 62, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(229, 62, 62, 0);
+    }
+}
+
+.schedule-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    background: var(--card-bg);
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.schedule-column h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.schedule-list {
+    list-style: none;
+}
+
+.schedule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #edf2f7;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+    border-radius: 6px;
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+.schedule-item:hover {
+    background-color: #f7fafc;
+    transform: translateX(4px);
+}
+
+.schedule-item .item-time {
+    font-weight: 600;
+    color: var(--text-main);
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    width: 75px;
+    /* fixed width for alignment */
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.schedule-item .item-name {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: right;
+    flex: 1;
+}
+
+/* Highlight the active/next bus in the list */
+.schedule-item.next-bus {
+    background-color: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding-left: 0.6rem;
+    border-bottom: none;
+    margin: 0.25rem 0;
+}
+
+.schedule-item.next-bus .item-time,
+.schedule-item.next-bus .item-name {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.schedule-item.past-bus {
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 0;
+    }
+
+    .logo-wrapper {
+        gap: 0.5rem;
+        padding: 0.5rem 0;
+    }
+
+    .logo-icon-container {
+        width: 100px;
+        height: 60px;
+    }
+
+    .logo-icon {
+        width: 250px;
+        left: -10px;
+    }
+
+    .logo-title {
+        font-size: 1.25rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .upcoming-section {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .card {
+        padding: 1.25rem 0.5rem;
+        border-radius: 12px;
+    }
+
+    .card h2 {
+        font-size: 0.6rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .upcoming-info .time {
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+
+    .upcoming-info .bus-name {
+        font-size: 0.7rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+
+    .upcoming-info .label {
+        font-size: 0.6rem;
+        padding: 0.15rem 0.4rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .upcoming-info .countdown {
+        font-size: 0.7rem;
+        margin-top: 0.5rem;
+    }
+
+    .schedule-section {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .schedule-item .item-time {
+        font-size: 0.75rem;
+        width: 75px;
+        white-space: nowrap;
+    }
+
+    .schedule-item .item-name {
+        font-size: 0.75rem;
+    }
+}

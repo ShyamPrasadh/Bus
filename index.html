@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Timing</title>
+    <!-- Modern font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-wrapper">
+            <div class="logo-icon-container">
+                <img src="/Users/shyam/.gemini/antigravity/brain/47c531c8-1a7b-4641-b9d1-b83219b2ca0b/bus_timing_logo_1772567040193.png"
+                    alt="Bus Icon" class="logo-icon">
+            </div>
+            <div class="logo-text">
+                <div class="logo-title">THAMMAMPATTI</div>
+                <div class="logo-subtitle">BUS TIMINGS</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="upcoming-section">
+            <div class="card" id="card-s-to-t">
+                <h2>Salem → Thammampatti</h2>
+                <div class="upcoming-info">
+                    <span class="label">Next Bus</span>
+                    <strong class="time" id="next-s-to-t-time">--:--</strong>
+                    <span class="bus-name" id="next-s-to-t-name">Calculating...</span>
+                    <span class="countdown" id="countdown-s-to-t"></span>
+                </div>
+            </div>
+
+            <div class="card" id="card-t-to-s">
+                <h2>Thammampatti → Salem</h2>
+                <div class="upcoming-info">
+                    <span class="label">Next Bus</span>
+                    <strong class="time" id="next-t-to-s-time">--:--</strong>
+                    <span class="bus-name" id="next-t-to-s-name">Calculating...</span>
+                    <span class="countdown" id="countdown-t-to-s"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="schedule-section">
+            <div class="schedule-column">
+                <h3>Salem → Thammampatti</h3>
+                <ul class="schedule-list" id="list-s-to-t">
+                    <!-- Populated by JS -->
+                </ul>
+            </div>
+            <div class="schedule-column">
+                <h3>Thammampatti → Salem</h3>
+                <ul class="schedule-list" id="list-t-to-s">
+                    <!-- Populated by JS -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
